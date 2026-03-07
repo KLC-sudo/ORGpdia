@@ -1,0 +1,127 @@
+{
+  "navLinks": [
+    {
+      "name": "About",
+      "href": "#about"
+    },
+    {
+      "name": "Contact",
+      "href": "#contact"
+    }
+  ],
+  "branding": {
+    "logoTop": "/uploads/1768917977598-logo.png",
+    "logoBottom": "/uploads/1768917103354-NEW_PDIA_LOGO.jpg",
+    "logoTopSize": 64,
+    "logoBottomSize": 150
+  },
+  "services": [
+    {
+      "icon": "/uploads/1768920899998-logo.png",
+      "title": "Curriculum Design & Review",
+      "description": "We develop and adapt curricula that are competency-based, inclusive, culturally responsive, and aligned with both national and global standards. Our work supports both formal and non-formal education settings."
+    },
+    {
+      "icon": "ComputerDesktopIcon",
+      "title": "ICT Integration in Education",
+      "description": "We support schools and institutions to embed Information and Communication Technology (ICT) into teaching and learning. This includes:",
+      "subItems": [
+        "Digital content development",
+        "Blended and remote learning solutions",
+        "Training for teachers in educational technology tools",
+        "ICT strategy and infrastructure planning",
+        "ICT integration into teaching and learning"
+      ]
+    },
+    {
+      "icon": "/uploads/1768921476243-racheal_kalembe.jpg",
+      "title": "Teacher Training & Professional Development",
+      "description": "We design and deliver continuous professional development (CPD) programs that improve teaching practice, subject mastery, classroom management, and learner-centred pedagogy."
+    },
+    {
+      "icon": "/uploads/1768921468709-Moses_Tuhame.jpg",
+      "title": "Stakeholder Capacity Development",
+      "description": "We strengthen the capacity of education stakeholders—including school leaders, policy makers, and community actors—through training, coaching, and systems support. We help build collaborative and effective education ecosystems."
+    },
+    {
+      "icon": "MagnifyingGlassIcon",
+      "title": "Research, Monitoring & Evaluation",
+      "description": "We conduct educational research, needs assessments, and evaluations to inform policy, program design, and implementation."
+    },
+    {
+      "icon": "PolicyAndTransformation",
+      "title": "Policy Advocacy & Transformation",
+      "description": "We support governments and institutions to develop, review, and implement education policies that are inclusive, evidence-based, and aligned with national and global education goals."
+    }
+  ],
+  "team": [
+    {
+      "name": "Moses Tuhame",
+      "role": "CEO & Lead Consultant",
+      "image": "/uploads/1768921468709-Moses_Tuhame.jpg"
+    },
+    {
+      "name": "Racheal Kalembe",
+      "role": "Senior Education Consultant",
+      "image": "/uploads/1768921476243-racheal_kalembe.jpg"
+    }
+  ],
+  "approach": [
+    {
+      "title": "Participatory & Contextualized",
+      "description": "We co-design solutions with clients and communities to ensure relevance and sustainability.",
+      "icon": "/uploads/1768921468709-Moses_Tuhame.jpg"
+    }
+  ],
+  "partners": [
+    {
+      "name": "Ministry of Education",
+      "icon": "AcademicCapIcon"
+    },
+    {
+      "name": "UNESCO",
+      "icon": "GlobeAltIcon"
+    },
+    {
+      "name": "Local NGOs",
+      "icon": "UserGroupIcon"
+    }
+  ],
+  "contactInfo": {
+    "email": "info@pdialtd.com",
+    "phone": "+256 123 456 789",
+    "address": "Kampala, Uganda"
+  },
+  "about": {
+    "title": "About PDIA",
+    "subtitle": "Advancing quality, relevance, and equity in learning.",
+    "whoWeAre": "PDIA Ltd is a leading education-focused consultancy firm committed to advancing quality, relevance, and equity in learning. We specialize in education system strengthening through evidence-based solutions in curriculum design, teacher training, ICT integration, and capacity building for key education stakeholders. And advocacy for integration of evidence-based innovations into national policy frameworks. With a team of experienced educators, policy experts, curriculum specialists, digital learning experts and instruction and pedagogy experts, we partner with governments, NGOs, schools, and development organizations to transform education.",
+    "mission": "To deliver innovative, inclusive, and sustainable education solutions that empower educators, learners, and communities to thrive in a dynamic and digital world.",
+    "vision": "To be a trusted partner in redefining education through locally relevant, globally informed, and technology-enhanced solutions."
+  },
+  "servicesTitle": "What We Do",
+  "servicesSubtitle": "Providing evidence-based solutions to strengthen education systems.",
+  "approachTitle": "Strategic Approach",
+  "approachSubtitle": "We believe in solutions that are co-designed, evidence-based, and built for sustainable impact.",
+  "partnersTitle": "Who We Work With",
+  "partnersSubtitle": "Transforming education through strong partnerships and collaboration.",
+  "partnersVisible": true,
+  "teamTitle": "Our Team",
+  "teamSubtitle": "Meet the dedicated professionals driving educational transformation across Africa.",
+  "teamVisible": true,
+  "galleryTitle": "Our Gallery",
+  "gallerySubtitle": "Showcasing our impact and community work",
+  "galleryVisible": true,
+  "gallery": [
+    {
+      "image": "/placeholder-gallery.jpg",
+      "caption": "Community workshop in action",
+      "alt": "Community members participating in a workshop"
+    },
+    {
+      "image": "/placeholder-gallery.jpg",
+      "caption": "Youth leadership training",
+      "alt": "Young leaders during training session"
+    }
+  ]
+}
