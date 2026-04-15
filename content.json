@@ -5,13 +5,10 @@
       "href": "#about"
     },
     {
-<<<<<<< HEAD
       "name": "Blog",
       "href": "#blog"
     },
     {
-=======
->>>>>>> a16f8fa30e4c8580578bdf3dd5ed09dc6c928d5c
       "name": "Contact",
       "href": "#contact"
     }
@@ -119,12 +116,9 @@
   "galleryTitle": "Our Gallery",
   "gallerySubtitle": "Showcasing our impact and community work",
   "galleryVisible": true,
-<<<<<<< HEAD
   "blogTitle": "Insights & Updates",
   "blogSubtitle": "Perspectives on education, policy, and innovation across Africa.",
   "blogVisible": true,
-=======
->>>>>>> a16f8fa30e4c8580578bdf3dd5ed09dc6c928d5c
   "gallery": [
     {
       "image": "/placeholder-gallery.jpg",
@@ -136,7 +130,6 @@
       "caption": "Youth leadership training",
       "alt": "Young leaders during training session"
     }
-<<<<<<< HEAD
   ],
   "blog": [
     {
@@ -159,7 +152,5 @@
       "tags": ["ICT", "Technology", "Inclusion"],
       "published": true
     }
-=======
->>>>>>> a16f8fa30e4c8580578bdf3dd5ed09dc6c928d5c
   ]
 }
