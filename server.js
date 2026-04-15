@@ -123,25 +123,54 @@ app.post('/api/save-content', requireAuth, express.json({ limit: '50mb' }), (req
 // Get Content Endpoint (serves the persistent content.json)
 app.get('/api/content', (req, res) => {
     const contentPath = join(dataDir, 'content.json');
+    const distContentPath = join(__dirname, 'dist', 'content.json');
 
-    // If persistent content.json doesn't exist, copy from dist (initial state)
+    // Load defaults from the bundled dist/content.json (always up to date)
+    let defaults = {};
+    if (fs.existsSync(distContentPath)) {
+        try { defaults = JSON.parse(fs.readFileSync(distContentPath, 'utf8')); } catch (_) {}
+    }
+
+    // If no persistent content yet, initialise from defaults
     if (!fs.existsSync(contentPath)) {
-        const distContentPath = join(__dirname, 'dist', 'content.json');
-        if (fs.existsSync(distContentPath)) {
-            fs.copyFileSync(distContentPath, contentPath);
+        try {
+            fs.writeFileSync(contentPath, JSON.stringify(defaults, null, 2));
             console.log('Initialized content.json from dist to:', contentPath);
-        }
+        } catch (_) {}
     }
 
     try {
-        const content = fs.readFileSync(contentPath, 'utf8');
+        const saved = JSON.parse(fs.readFileSync(contentPath, 'utf8'));
+
+        // Merge: defaults supply any keys missing from the saved version
+        // Top-level scalar/boolean/array keys only (arrays like blog are seeded if absent)
+        const merged = { ...defaults, ...saved };
+
+        // Ensure blog array exists (seed from defaults if the saved file pre-dates the feature)
+        if (!merged.blog) merged.blog = defaults.blog || [];
+        if (merged.blogVisible === undefined) merged.blogVisible = defaults.blogVisible ?? true;
+        if (!merged.blogTitle) merged.blogTitle = defaults.blogTitle || 'Insights & Updates';
+        if (!merged.blogSubtitle) merged.blogSubtitle = defaults.blogSubtitle || '';
+
+        // Ensure navLinks has Blog (seed if saved version pre-dates the feature)
+        if (Array.isArray(merged.navLinks) && !merged.navLinks.find(l => l.href === '#blog')) {
+            const contactIdx = merged.navLinks.findIndex(l => l.href === '#contact');
+            const blogLink = { name: 'Blog', href: '#blog' };
+            if (contactIdx >= 0) {
+                merged.navLinks.splice(contactIdx, 0, blogLink);
+            } else {
+                merged.navLinks.push(blogLink);
+            }
+        }
+
         res.setHeader('Content-Type', 'application/json');
-        res.send(content);
+        res.send(JSON.stringify(merged));
     } catch (error) {
         console.error('Error reading content:', error);
         res.status(500).json({ error: 'Failed to load content' });
     }
 });
+
 
 // Authentication Endpoints
 
