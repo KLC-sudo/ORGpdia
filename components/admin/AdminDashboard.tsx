@@ -263,7 +263,7 @@ const AdminDashboard: React.FC<{ onLogout?: () => void }> = ({ onLogout }) => {
             </div>
 
             <div className="flex border-b border-gray-200 mb-8 overflow-x-auto scrollbar-hide">
-                {['branding', 'about', 'navigation', 'services', 'team', 'approach', 'partners', 'gallery', 'analytics', 'contact'].map((tab) => (
+                {['branding', 'about', 'navigation', 'services', 'team', 'approach', 'partners', 'gallery', 'blog', 'analytics', 'contact'].map((tab) => (
                     <button
                         key={tab}
                         onClick={() => setActiveTab(tab)}
@@ -878,6 +878,206 @@ const AdminDashboard: React.FC<{ onLogout?: () => void }> = ({ onLogout }) => {
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                        ))}
+                    </div>
+                )}
+
+                {activeTab === 'blog' && (
+                    <div className="space-y-8">
+                        {/* Blog Section Settings */}
+                        <div className="p-6 border border-gray-100 rounded-xl bg-gray-50/50 space-y-4">
+                            <h3 className="text-xl font-bold text-pdi-dark-blue">Blog Section Settings</h3>
+                            <div>
+                                <label className="block text-sm font-medium text-gray-700 mb-1">Section Title</label>
+                                <input
+                                    type="text"
+                                    value={content.blogTitle || ''}
+                                    onChange={(e) => updateContent({ ...content, blogTitle: e.target.value })}
+                                    className="w-full p-2.5 border border-gray-300 rounded-lg focus:ring-pdi-red focus:border-pdi-red transition-all"
+                                />
+                            </div>
+                            <div>
+                                <label className="block text-sm font-medium text-gray-700 mb-1">Section Subtitle</label>
+                                <textarea
+                                    rows={2}
+                                    value={content.blogSubtitle || ''}
+                                    onChange={(e) => updateContent({ ...content, blogSubtitle: e.target.value })}
+                                    className="w-full p-2.5 border border-gray-300 rounded-lg focus:ring-pdi-red focus:border-pdi-red transition-all"
+                                />
+                            </div>
+                            <div className="flex items-center space-x-3">
+                                <input
+                                    type="checkbox"
+                                    id="blogVisible"
+                                    checked={content.blogVisible ?? true}
+                                    onChange={(e) => updateContent({ ...content, blogVisible: e.target.checked })}
+                                    className="w-5 h-5 text-pdi-red focus:ring-pdi-red border-gray-300 rounded"
+                                />
+                                <label htmlFor="blogVisible" className="text-sm font-medium text-gray-700">
+                                    Show Blog section on homepage
+                                </label>
+                            </div>
+                        </div>
+
+                        {/* Add New Post */}
+                        <div className="flex justify-between items-center">
+                            <h3 className="text-xl font-bold text-pdi-dark-blue">Blog Posts</h3>
+                            <button
+                                onClick={() => {
+                                    const newPost = {
+                                        id: Date.now().toString(),
+                                        title: 'New Post',
+                                        excerpt: '',
+                                        content: '',
+                                        author: 'PDIA Editorial Team',
+                                        date: new Date().toISOString().split('T')[0],
+                                        tags: [],
+                                        published: false,
+                                    };
+                                    updateContent({ ...content, blog: [...(content.blog || []), newPost] });
+                                }}
+                                className="bg-pdi-red text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-opacity-90 transition-colors"
+                            >
+                                + New Post
+                            </button>
+                        </div>
+
+                        {(content.blog || []).map((post, idx) => (
+                            <div key={post.id} className="p-6 border border-gray-100 rounded-xl bg-gray-50/50 relative space-y-4">
+                                <div className="flex items-center justify-between">
+                                    <div className="flex items-center gap-3">
+                                        <span className={`px-3 py-1 rounded-full text-xs font-bold ${
+                                            post.published ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700'
+                                        }`}>
+                                            {post.published ? 'Published' : 'Draft'}
+                                        </span>
+                                        <span className="text-sm text-gray-400">{post.date}</span>
+                                    </div>
+                                    <div className="flex items-center gap-2">
+                                        <button
+                                            onClick={() => {
+                                                const updated = [...(content.blog || [])];
+                                                updated[idx] = { ...updated[idx], published: !updated[idx].published };
+                                                updateContent({ ...content, blog: updated });
+                                            }}
+                                            className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors ${
+                                                post.published
+                                                    ? 'bg-yellow-100 text-yellow-700 hover:bg-yellow-200'
+                                                    : 'bg-green-100 text-green-700 hover:bg-green-200'
+                                            }`}
+                                        >
+                                            {post.published ? 'Unpublish' : 'Publish'}
+                                        </button>
+                                        <button
+                                            onClick={() => {
+                                                if (confirm('Delete this post?')) {
+                                                    const updated = (content.blog || []).filter((_, i) => i !== idx);
+                                                    updateContent({ ...content, blog: updated });
+                                                }
+                                            }}
+                                            className="text-red-500 hover:text-red-700 font-bold text-lg leading-none px-2"
+                                            title="Delete post"
+                                        >✕</button>
+                                    </div>
+                                </div>
+
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label className="block text-sm font-medium text-gray-700 mb-1">Title</label>
+                                        <input
+                                            type="text"
+                                            value={post.title}
+                                            onChange={(e) => {
+                                                const updated = [...(content.blog || [])];
+                                                updated[idx] = { ...updated[idx], title: e.target.value };
+                                                updateContent({ ...content, blog: updated });
+                                            }}
+                                            className="w-full p-2.5 border border-gray-300 rounded-lg focus:ring-pdi-red focus:border-pdi-red transition-all"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm font-medium text-gray-700 mb-1">Author</label>
+                                        <input
+                                            type="text"
+                                            value={post.author}
+                                            onChange={(e) => {
+                                                const updated = [...(content.blog || [])];
+                                                updated[idx] = { ...updated[idx], author: e.target.value };
+                                                updateContent({ ...content, blog: updated });
+                                            }}
+                                            className="w-full p-2.5 border border-gray-300 rounded-lg focus:ring-pdi-red focus:border-pdi-red transition-all"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm font-medium text-gray-700 mb-1">Date</label>
+                                        <input
+                                            type="date"
+                                            value={post.date}
+                                            onChange={(e) => {
+                                                const updated = [...(content.blog || [])];
+                                                updated[idx] = { ...updated[idx], date: e.target.value };
+                                                updateContent({ ...content, blog: updated });
+                                            }}
+                                            className="w-full p-2.5 border border-gray-300 rounded-lg focus:ring-pdi-red focus:border-pdi-red transition-all"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm font-medium text-gray-700 mb-1">Tags (comma-separated)</label>
+                                        <input
+                                            type="text"
+                                            value={(post.tags || []).join(', ')}
+                                            onChange={(e) => {
+                                                const updated = [...(content.blog || [])];
+                                                updated[idx] = { ...updated[idx], tags: e.target.value.split(',').map(t => t.trim()).filter(Boolean) };
+                                                updateContent({ ...content, blog: updated });
+                                            }}
+                                            className="w-full p-2.5 border border-gray-300 rounded-lg focus:ring-pdi-red focus:border-pdi-red transition-all"
+                                            placeholder="e.g. Education, Policy, ICT"
+                                        />
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-700 mb-1">Excerpt (short preview)</label>
+                                    <textarea
+                                        rows={2}
+                                        value={post.excerpt}
+                                        onChange={(e) => {
+                                            const updated = [...(content.blog || [])];
+                                            updated[idx] = { ...updated[idx], excerpt: e.target.value };
+                                            updateContent({ ...content, blog: updated });
+                                        }}
+                                        className="w-full p-2.5 border border-gray-300 rounded-lg focus:ring-pdi-red focus:border-pdi-red transition-all"
+                                        placeholder="A short summary shown on the blog card..."
+                                    />
+                                </div>
+
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-700 mb-1">Full Article Content</label>
+                                    <textarea
+                                        rows={8}
+                                        value={post.content}
+                                        onChange={(e) => {
+                                            const updated = [...(content.blog || [])];
+                                            updated[idx] = { ...updated[idx], content: e.target.value };
+                                            updateContent({ ...content, blog: updated });
+                                        }}
+                                        className="w-full p-2.5 border border-gray-300 rounded-lg focus:ring-pdi-red focus:border-pdi-red transition-all font-mono text-sm"
+                                        placeholder="Write the full article here. Use blank lines for paragraphs."
+                                    />
+                                </div>
+
+                                <ImageUpload
+                                    label="Cover Image (Optional)"
+                                    currentImage={post.image || ''}
+                                    onUpload={(url) => {
+                                        const updated = [...(content.blog || [])];
+                                        updated[idx] = { ...updated[idx], image: url };
+                                        updateContent({ ...content, blog: updated });
+                                    }}
+                                    uniqueId={`blog-image-${idx}`}
+                                />
                             </div>
                         ))}
                     </div>

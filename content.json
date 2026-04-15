@@ -5,6 +5,10 @@
       "href": "#about"
     },
     {
+      "name": "Blog",
+      "href": "#blog"
+    },
+    {
       "name": "Contact",
       "href": "#contact"
     }
@@ -112,6 +116,9 @@
   "galleryTitle": "Our Gallery",
   "gallerySubtitle": "Showcasing our impact and community work",
   "galleryVisible": true,
+  "blogTitle": "Insights & Updates",
+  "blogSubtitle": "Perspectives on education, policy, and innovation across Africa.",
+  "blogVisible": true,
   "gallery": [
     {
       "image": "/placeholder-gallery.jpg",
@@ -122,6 +129,28 @@
       "image": "/placeholder-gallery.jpg",
       "caption": "Youth leadership training",
       "alt": "Young leaders during training session"
+    }
+  ],
+  "blog": [
+    {
+      "id": "1",
+      "title": "Transforming Education Through Competency-Based Curricula",
+      "excerpt": "Competency-based education shifts the focus from memorisation to measurable skills. Here's how PDIA is driving this shift across Uganda.",
+      "content": "Competency-based education (CBE) is reshaping how students learn and how teachers teach. Unlike traditional models, CBE prioritises what a learner can do over what they have been exposed to. At PDIA, we have partnered with schools and ministries to design curricula that embed 21st-century competencies — critical thinking, collaboration, digital literacy, and problem solving — into every subject area.\n\nOur approach begins with a thorough needs assessment, working alongside teachers, administrators, and community stakeholders to understand the local context. We then design learning outcomes that are measurable, relevant, and progressive. The result is a curriculum that prepares learners not just for exams, but for life.",
+      "author": "PDIA Editorial Team",
+      "date": "2026-03-15",
+      "tags": ["Curriculum", "Education", "CBE"],
+      "published": true
+    },
+    {
+      "id": "2",
+      "title": "The Role of ICT in Bridging Uganda's Education Gap",
+      "excerpt": "Technology is no longer a luxury in education — it is a necessity. PDIA explores how ICT can close the gap between urban and rural learning outcomes.",
+      "content": "Access to quality education remains unequal across Uganda, with rural learners often receiving fewer resources and less experienced teachers. ICT integration offers a powerful equaliser. When implemented thoughtfully, digital tools can deliver engaging content, support remote professional development for teachers, and provide learners with access to a world of knowledge.\n\nPDIA's ICT integration programmes focus on training both teachers and administrators, ensuring technology is embedded in pedagogy — not merely placed in classrooms. We work to build sustainable ICT ecosystems that communities can maintain and grow.",
+      "author": "PDIA Editorial Team",
+      "date": "2026-02-20",
+      "tags": ["ICT", "Technology", "Inclusion"],
+      "published": true
     }
   ]
 }

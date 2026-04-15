@@ -31,6 +31,18 @@ export interface GalleryImage {
   alt: string;
 }
 
+export interface BlogPost {
+  id: string;
+  title: string;
+  excerpt: string;
+  content: string;
+  author: string;
+  date: string;
+  image?: string;
+  tags?: string[];
+  published: boolean;
+}
+
 export interface Branding {
   logoTop: string;
   logoBottom: string;
@@ -61,6 +73,9 @@ export interface Content {
   galleryTitle: string;
   gallerySubtitle: string;
   galleryVisible: boolean;
+  blogTitle: string;
+  blogSubtitle: string;
+  blogVisible: boolean;
 
   // Content arrays
   navLinks: { name: string; href: string }[];
@@ -71,6 +86,7 @@ export interface Content {
   approach: Approach[];
   partners: Partner[];
   gallery: GalleryImage[];
+  blog: BlogPost[];
   contactInfo: {
     email: string;
     phone: string;
