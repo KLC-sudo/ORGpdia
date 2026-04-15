@@ -75,24 +75,26 @@ const BlogModal: React.FC<{ post: BlogPost; onClose: () => void }> = ({ post, on
             <img src={post.image} alt={post.title} className="w-full h-full object-cover" />
           </div>
         )}
-        <div className="p-8">
-          <button
-            onClick={onClose}
-            className="float-right ml-4 text-gray-400 hover:text-pdi-red transition-colors"
-            aria-label="Close"
-          >
-            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-          <div className="flex flex-wrap gap-2 mb-4">
-            {post.tags?.map((tag, i) => (
-              <span key={i} className="text-xs font-semibold bg-pdi-red/10 text-pdi-red px-2 py-1 rounded-full">
-                {tag}
-              </span>
-            ))}
+        <div className="p-8 text-left">
+          <div className="flex items-start justify-between mb-4">
+            <div className="flex flex-wrap gap-2">
+              {post.tags?.map((tag, i) => (
+                <span key={i} className="text-xs font-semibold bg-pdi-red/10 text-pdi-red px-2 py-1 rounded-full">
+                  {tag}
+                </span>
+              ))}
+            </div>
+            <button
+              onClick={onClose}
+              className="ml-4 flex-shrink-0 text-gray-400 hover:text-pdi-red transition-colors"
+              aria-label="Close"
+            >
+              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
           </div>
-          <h2 className="text-2xl md:text-3xl font-extrabold text-pdi-dark-blue mb-3 leading-tight">
+          <h2 className="text-2xl md:text-3xl font-extrabold text-pdi-dark-blue mb-3 leading-tight text-left">
             {post.title}
           </h2>
           <div className="flex items-center gap-3 mb-6 text-sm text-gray-500">
@@ -100,7 +102,7 @@ const BlogModal: React.FC<{ post: BlogPost; onClose: () => void }> = ({ post, on
             <span>·</span>
             <span>{formattedDate}</span>
           </div>
-          <div className="prose prose-lg max-w-none text-pdi-gray leading-relaxed whitespace-pre-line">
+          <div className="text-left text-pdi-gray leading-relaxed whitespace-pre-wrap text-base">
             {post.content}
           </div>
         </div>
