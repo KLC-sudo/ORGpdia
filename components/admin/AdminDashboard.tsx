@@ -883,7 +883,7 @@ const AdminDashboard: React.FC<{ onLogout?: () => void }> = ({ onLogout }) => {
                     </div>
                 )}
 
-<<<<<<< HEAD
+
                 {activeTab === 'blog' && (
                     <div className="space-y-8">
                         {/* Blog Section Settings */}
