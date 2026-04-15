@@ -263,7 +263,11 @@ const AdminDashboard: React.FC<{ onLogout?: () => void }> = ({ onLogout }) => {
             </div>
 
             <div className="flex border-b border-gray-200 mb-8 overflow-x-auto scrollbar-hide">
+<<<<<<< HEAD
                 {['branding', 'about', 'navigation', 'services', 'team', 'approach', 'partners', 'gallery', 'blog', 'analytics', 'contact'].map((tab) => (
+=======
+                {['branding', 'about', 'navigation', 'services', 'team', 'approach', 'partners', 'gallery', 'analytics', 'contact'].map((tab) => (
+>>>>>>> a16f8fa30e4c8580578bdf3dd5ed09dc6c928d5c
                     <button
                         key={tab}
                         onClick={() => setActiveTab(tab)}
@@ -883,6 +887,7 @@ const AdminDashboard: React.FC<{ onLogout?: () => void }> = ({ onLogout }) => {
                     </div>
                 )}
 
+<<<<<<< HEAD
                 {activeTab === 'blog' && (
                     <div className="space-y-8">
                         {/* Blog Section Settings */}
@@ -1083,6 +1088,8 @@ const AdminDashboard: React.FC<{ onLogout?: () => void }> = ({ onLogout }) => {
                     </div>
                 )}
 
+=======
+>>>>>>> a16f8fa30e4c8580578bdf3dd5ed09dc6c928d5c
                 {activeTab === 'analytics' && (
                     <div className="space-y-8">
                         <div className="flex justify-between items-center">

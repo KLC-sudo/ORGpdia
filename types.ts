@@ -31,6 +31,7 @@ export interface GalleryImage {
   alt: string;
 }
 
+<<<<<<< HEAD
 export interface BlogPost {
   id: string;
   title: string;
@@ -43,6 +44,8 @@ export interface BlogPost {
   published: boolean;
 }
 
+=======
+>>>>>>> a16f8fa30e4c8580578bdf3dd5ed09dc6c928d5c
 export interface Branding {
   logoTop: string;
   logoBottom: string;
@@ -73,9 +76,12 @@ export interface Content {
   galleryTitle: string;
   gallerySubtitle: string;
   galleryVisible: boolean;
+<<<<<<< HEAD
   blogTitle: string;
   blogSubtitle: string;
   blogVisible: boolean;
+=======
+>>>>>>> a16f8fa30e4c8580578bdf3dd5ed09dc6c928d5c
 
   // Content arrays
   navLinks: { name: string; href: string }[];
@@ -86,7 +92,10 @@ export interface Content {
   approach: Approach[];
   partners: Partner[];
   gallery: GalleryImage[];
+<<<<<<< HEAD
   blog: BlogPost[];
+=======
+>>>>>>> a16f8fa30e4c8580578bdf3dd5ed09dc6c928d5c
   contactInfo: {
     email: string;
     phone: string;

@@ -11,6 +11,18 @@ node_modules
 dist
 dist-ssr
 *.local
+<<<<<<< HEAD
+=======
+.env
+
+# Data and Uploads
+analytics.json
+ip-blacklist.json
+login-attempts.json
+suspicious-activity.json
+uploads/
+public/uploads/
+>>>>>>> a16f8fa30e4c8580578bdf3dd5ed09dc6c928d5c
 
 # Editor directories and files
 .vscode/*

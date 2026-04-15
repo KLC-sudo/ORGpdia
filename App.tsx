@@ -7,7 +7,10 @@ import ApproachSection from './components/ApproachSection';
 import PartnersSection from './components/PartnersSection';
 import TeamSection from './components/TeamSection';
 import GallerySection from './components/GallerySection';
+<<<<<<< HEAD
 import BlogSection from './components/BlogSection';
+=======
+>>>>>>> a16f8fa30e4c8580578bdf3dd5ed09dc6c928d5c
 import ContactFooter from './components/ContactFooter';
 import { ContentProvider, useContent } from './ContentContext';
 import AdminDashboard from './components/admin/AdminDashboard';
@@ -108,7 +111,10 @@ const AppContent: React.FC = () => {
       {content.galleryVisible && <GallerySection />}
       {content.partnersVisible && <PartnersSection />}
       {content.teamVisible && <TeamSection />}
+<<<<<<< HEAD
       {content.blogVisible && <BlogSection />}
+=======
+>>>>>>> a16f8fa30e4c8580578bdf3dd5ed09dc6c928d5c
       <ContactFooter />
 
       {/* Invisible Admin Toggle - Triple Click (BBox) */}
