@@ -105,10 +105,10 @@ const AppContent: React.FC = () => {
       <AboutSection />
       <ServicesSection />
       <ApproachSection />
+      {content.blogVisible && <BlogSection />}
       {content.galleryVisible && <GallerySection />}
       {content.partnersVisible && <PartnersSection />}
       {content.teamVisible && <TeamSection />}
-      {content.blogVisible && <BlogSection />}
       <ContactFooter />
 
       {/* Invisible Admin Toggle - Triple Click (BBox) */}
