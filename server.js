@@ -123,12 +123,14 @@ app.post('/api/save-content', requireAuth, express.json({ limit: '50mb' }), (req
 // Get Content Endpoint (serves the persistent content.json)
 app.get('/api/content', (req, res) => {
     const contentPath = join(dataDir, 'content.json');
-    const distContentPath = join(__dirname, 'dist', 'content.json');
+    const bundledContentPath = join(__dirname, 'dist', 'content.json');
+    const rootContentPath = join(__dirname, 'content.json');
 
-    // Load defaults from the bundled dist/content.json (always up to date)
+    // Load defaults: prefer bundled dist copy, fall back to repo-root content.json
+    const defaultsPath = fs.existsSync(bundledContentPath) ? bundledContentPath : rootContentPath;
     let defaults = {};
-    if (fs.existsSync(distContentPath)) {
-        try { defaults = JSON.parse(fs.readFileSync(distContentPath, 'utf8')); } catch (_) {}
+    if (fs.existsSync(defaultsPath)) {
+        try { defaults = JSON.parse(fs.readFileSync(defaultsPath, 'utf8')); } catch (_) {}
     }
 
     // If no persistent content yet, initialise from defaults
