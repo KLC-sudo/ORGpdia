@@ -291,8 +291,10 @@ app.get('*', (req, res) => {
     res.sendFile(join(__dirname, 'dist', 'index.html'));
 });
 
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+const HOST = process.env.HOST || '0.0.0.0';
+
+app.listen(PORT, HOST, () => {
+    console.log(`Server listening on ${HOST}:${PORT}`);
     console.log(`Uploads directory: ${uploadsDir}`);
     console.log(`Node version: ${process.version}`);
 });
