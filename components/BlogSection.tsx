@@ -125,9 +125,11 @@ const BlogSection: React.FC = () => {
             <h2 className="text-3xl md:text-4xl font-extrabold text-pdi-dark-blue">
               {content.blogTitle || 'Insights & Updates'}
             </h2>
-            <p className="mt-4 text-lg text-pdi-gray max-w-2xl mx-auto">
-              {content.blogSubtitle || ''}
-            </p>
+            {content.blogSubtitle && (
+              <p className="mt-3 text-base text-pdi-gray max-w-xl mx-auto italic truncate" title={content.blogSubtitle}>
+                {content.blogSubtitle}
+              </p>
+            )}
           </div>
           {publishedPosts.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

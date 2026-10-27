@@ -887,24 +887,29 @@ const AdminDashboard: React.FC<{ onLogout?: () => void }> = ({ onLogout }) => {
                 {activeTab === 'blog' && (
                     <div className="space-y-8">
                         {/* Blog Section Settings */}
-                        <div className="p-6 border border-gray-100 rounded-xl bg-gray-50/50 space-y-4">
-                            <h3 className="text-xl font-bold text-pdi-dark-blue">Blog Section Settings</h3>
+                        <div className="p-6 border border-blue-100 rounded-xl bg-blue-50/40 space-y-4">
                             <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-1">Section Title</label>
+                                <h3 className="text-xl font-bold text-pdi-dark-blue">Blog Section Header</h3>
+                                <p className="text-xs text-gray-500 mt-1">These control the heading shown at the <strong>top of the Blog section</strong> on the homepage — not the actual blog posts.</p>
+                            </div>
+                            <div>
+                                <label className="block text-sm font-medium text-gray-700 mb-1">Section Heading <span className="text-gray-400 font-normal">(e.g. "Insights &amp; Updates")</span></label>
                                 <input
                                     type="text"
                                     value={content.blogTitle || ''}
                                     onChange={(e) => updateContent({ ...content, blogTitle: e.target.value })}
                                     className="w-full p-2.5 border border-gray-300 rounded-lg focus:ring-pdi-red focus:border-pdi-red transition-all"
+                                    placeholder="e.g. Insights & Updates"
                                 />
                             </div>
                             <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-1">Section Subtitle</label>
-                                <textarea
-                                    rows={2}
+                                <label className="block text-sm font-medium text-gray-700 mb-1">Short Tagline <span className="text-gray-400 font-normal">(1–2 sentences max — this is NOT where blog articles go)</span></label>
+                                <input
+                                    type="text"
                                     value={content.blogSubtitle || ''}
                                     onChange={(e) => updateContent({ ...content, blogSubtitle: e.target.value })}
                                     className="w-full p-2.5 border border-gray-300 rounded-lg focus:ring-pdi-red focus:border-pdi-red transition-all"
+                                    placeholder="e.g. Perspectives on education, policy, and innovation."
                                 />
                             </div>
                             <div className="flex items-center space-x-3">
@@ -921,17 +926,19 @@ const AdminDashboard: React.FC<{ onLogout?: () => void }> = ({ onLogout }) => {
                             </div>
                         </div>
 
-                        {/* Add New Post */}
                         <div className="flex justify-between items-center">
-                            <h3 className="text-xl font-bold text-pdi-dark-blue">Blog Posts</h3>
+                            <div>
+                                <h3 className="text-xl font-bold text-pdi-dark-blue">Blog Posts</h3>
+                                <p className="text-xs text-gray-500 mt-0.5">Each post has its own title, author, date, tags, excerpt and full article body.</p>
+                            </div>
                             <button
                                 onClick={() => {
                                     const newPost = {
                                         id: Date.now().toString(),
-                                        title: 'New Post',
+                                        title: '',
                                         excerpt: '',
                                         content: '',
-                                        author: 'PDIA Editorial Team',
+                                        author: '',
                                         date: new Date().toISOString().split('T')[0],
                                         tags: [],
                                         published: false,
@@ -943,6 +950,13 @@ const AdminDashboard: React.FC<{ onLogout?: () => void }> = ({ onLogout }) => {
                                 + New Post
                             </button>
                         </div>
+
+                        {(!content.blog || content.blog.length === 0) && (
+                            <div className="text-center py-10 border-2 border-dashed border-gray-200 rounded-xl">
+                                <p className="text-gray-500 font-medium">No blog posts yet.</p>
+                                <p className="text-sm text-gray-400 mt-1">Click <strong>+ New Post</strong> above to write your first article.</p>
+                            </div>
+                        )}
 
                         {(content.blog || []).map((post, idx) => (
                             <div key={post.id} className="p-6 border border-gray-100 rounded-xl bg-gray-50/50 relative space-y-4">
